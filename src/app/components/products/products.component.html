@@ -1,0 +1,75 @@
+<!-- component -->
+
+
+<div class="container mx-auto ">
+
+    <div class="my-6">
+        <button routerLink="/product/add" class="text-white tracking-widest bg-black px-2 py-1">
+            ADD PRODUCT
+        </button>
+        <table class="text-left w-full border-collapse bg-white my-6">
+            <thead>
+                <tr class="text-center">
+                    <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        name</th>
+                    <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        price</th>
+                    <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        image</th>
+                    <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">
+                        status</th>
+                    <th
+                        class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light text-center">
+                        Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="hover:bg-grey-lighter text-center" *ngFor='let product of products'>
+                    <td class="py-4 px-6 border-b border-grey-light">{{product.name}}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{product.price}}</td>
+
+                    <td class="py-4 px-6 border-b border-grey-light">
+                        <img class="w-20 mx-auto" src="{{product.image}}" alt="">
+                    </td>
+                    <td class="py-4 px-6 border-b border-grey-light">{{product.status ? 'instock' : 'outstock'}}</td>
+                    <td class="py-4 px-6 border-b border-grey-light">
+                        <div class="flex justify-evenly">
+                            <button routerLink="/product/edit/{{product.id}}"
+                                class="text-xs border rounded px-3 py-2 border-green-500 text-green-500">Edit</button>
+                            <button routerLink="/product/detail/{{product.id}}"
+                                class="text-xs border rounded px-3 py-2 border-green-500 text-green-500">Detail</button>
+                            
+                            <button class="text-xs border rounded px-3 py-2 border-red-500 text-red-500"
+                                (click)='onRemove(product.id)'>
+                                Delete
+                            </button>
+
+
+
+                        </div>
+
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <input class="border border-gray-700" type="text" (keypress)='onChangeInput($event)'>
+<input class="border border-gray-700" type="text" 
+[(ngModel)]='product.description'>
+<button (click)='onHandleClick()' class='ml-2 bg-black px-4 py-2 text-white'>
+    status
+</button> -->
